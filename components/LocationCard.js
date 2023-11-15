@@ -18,13 +18,16 @@ const LocationCard = ({ location, className }) => {
         // console.log('use effect running', locations.length, lat, lng);
 
         const getData = async () => {
-            const res = await fetch('http://localhost:3000/api/weather/', {
-                method: 'POST',
-                body: JSON.stringify({
-                    latitude: lat,
-                    longitude: lng,
-                }),
-            });
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_DOMAIN}/api/weather/`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        latitude: lat,
+                        longitude: lng,
+                    }),
+                }
+            );
 
             if (!res.ok) {
                 return;
