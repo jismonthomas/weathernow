@@ -11,7 +11,7 @@ const LocationWeatherasd = async ({ params, searchParams }) => {
     const { lat, lng, country, area } = searchParams;
     console.log('searchParams, params', lat, lng);
 
-    const res = await fetch('http://localhost:3000/api/weather/', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/weather/`, {
         method: 'POST',
         body: JSON.stringify({
             latitude: lat,
