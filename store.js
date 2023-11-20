@@ -105,4 +105,8 @@ export const useWeatherStore = create((set) => ({
         set((state) => ({
             locations: [...state.locations, { ...location, id: uuidv4() }],
         })),
+    saveAsPrimaryLocation: (location) =>
+        set((state) => ({
+            locations: [{ ...location, id: uuidv4() }, ...state.locations],
+        })),
 }));
