@@ -61,20 +61,30 @@ const FeaturedLocationWeather = ({ className }) => {
     const administrativeArea =
         primaryLocation.locationDetails.administrative_area_level_1.long_name;
 
-    const today = new Date();
-    const time = today.toLocaleTimeString('en-US', {
+    const today = weatherData?.hourly?.time[0].slice(0, 10);
+    const time = new Date().toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: 'numeric',
         // hour12: false,
         hourCycle: 'h23',
         timeZone: weatherData.timezone,
     });
-    const day = today.getDay();
+    // const day = new Date().getDay();
+    const day = new Date(today)
+        .toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            weekday: 'long',
+            hourCycle: 'h23',
+            timeZone: weatherData.timezone,
+        })
+        .slice(0, -5);
 
-    // console.log('day', day);
+    // console.log('time', time);
 
-    const dateTimeInIso = convertDate(today);
-    // console.log('dateTimeInIso', dateTimeInIso);
+    const hour = time.slice(0, 2);
+    const minute = '00';
+    const dateTimeInIso = `${today}T${hour}:${minute}`;
 
     const currentTimeIndex = weatherData?.hourly?.time?.indexOf(dateTimeInIso);
     // console.log('currentTimeIndex', currentTimeIndex);
@@ -159,7 +169,7 @@ const FeaturedLocationWeather = ({ className }) => {
                                         {time}
                                     </span>
                                     <span className="text-sm tracking-wide opacity-50">
-                                        {daysInWeek[day]}
+                                        {day}
                                     </span>
                                 </span>
                             </CardTitle>
