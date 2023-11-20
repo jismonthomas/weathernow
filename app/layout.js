@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children, modal }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`px-20 py-10 ${dm_sans.className}`}>
+            <body className={`${dm_sans.className}`}>
                 <Theme
                     attribute="class"
                     defaultTheme="dark"
