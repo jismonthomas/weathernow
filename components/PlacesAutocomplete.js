@@ -101,7 +101,7 @@ const PlacesAutoComplete = () => {
 
                 const allDetails = JSON.stringify(locationDetails);
 
-                router.push(
+                router.replace(
                     `weather/${locality}?lat=${lat}&lng=${lng}&country=${country}&area=${area}&locationDetails=${allDetails}`
                 );
 
