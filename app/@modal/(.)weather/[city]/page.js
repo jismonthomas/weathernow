@@ -26,7 +26,7 @@ const LocationModal = ({ searchParams, params }) => {
     const handleModal = () => {
         if (open) {
             setOpen(false);
-            router.back();
+            router.push('/');
         } else {
             setOpen(true);
         }
